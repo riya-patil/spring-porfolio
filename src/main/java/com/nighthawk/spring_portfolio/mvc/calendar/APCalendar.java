@@ -9,14 +9,15 @@ public class APCalendar {
      * isLeapYear(2016) returns True
      */          
     public static boolean isLeapYear(int year) {
-        if ((year % 4 == 0)) {
-            return true;
+        if ((year % 4 == 0)) { //uses the modulus function to determine if year is lyear
+            return true; //if remainder is 0 when divided by 4, then lyear = true
         }
 
         else {
-            return false;
+            return false; //if remainder is 1,2, or 3 then false
         }
     }
+
     /** Returns the value representing the day of the week 
      * 0 denotes Sunday, 
      * 1 denotes Monday, ..., 
@@ -24,9 +25,25 @@ public class APCalendar {
      * firstDayOfYear(2019) returns 2 for Tuesday.
     */
     private static int firstDayOfYear(int year) {
-        // implementation not shown
-
-        return 0;
+        int leapyears, rest, totaldays, day;
+    
+        // Count years between
+        year = (year - 1) - 1899; //returns the years between current and 1899
+        //-1 used to disregard current year
+    
+        // Count leap years
+        leapyears = year / 4;
+    
+        // Non leap years
+        rest = year - leapyears;
+    
+        // Total number of days in the years lying between the years
+        totaldays = (rest * 365) + (leapyears * 366) + 1; //includes 1st day
+    
+        // Actual day
+        day = (totaldays % 7);
+    
+        return day;
         }
 
 
@@ -38,7 +55,7 @@ public class APCalendar {
     */ 
     private static int dayOfYear(int month, int day, int year) {
         // implementation not shown
-
+        
         return 1;
         }
 
@@ -62,11 +79,11 @@ public class APCalendar {
     /** Tester method */
     public static void main(String[] args) {
         // Private access modifiers
-        System.out.println("firstDayOfYear: " + APCalendar.firstDayOfYear(2016));
+        System.out.println("firstDayOfYear: " + APCalendar.firstDayOfYear(2019));
         System.out.println("dayOfYear: " + APCalendar.dayOfYear(1, 1, 2022));
 
         // Public access modifiers
-        System.out.println("isLeapYear: " + APCalendar.isLeapYear(2022));
+        System.out.println("isLeapYear: " + APCalendar.isLeapYear(2016));
         System.out.println("numberOfLeapYears: " + APCalendar.numberOfLeapYears(2000, 2022));
         System.out.println("dayOfWeek: " + APCalendar.dayOfWeek(1, 1, 2022));
     }
