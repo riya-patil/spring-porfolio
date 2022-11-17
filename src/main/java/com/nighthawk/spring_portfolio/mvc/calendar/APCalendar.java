@@ -9,11 +9,14 @@ public class APCalendar {
      * isLeapYear(2016) returns True
      */          
     public static boolean isLeapYear(int year) {
-        // implementation not shown
-
-        return false;
+        if ((year % 4 == 0)) {
+            return true;
         }
-        
+
+        else {
+            return false;
+        }
+    }
     /** Returns the value representing the day of the week 
      * 0 denotes Sunday, 
      * 1 denotes Monday, ..., 
@@ -59,7 +62,7 @@ public class APCalendar {
     /** Tester method */
     public static void main(String[] args) {
         // Private access modifiers
-        System.out.println("firstDayOfYear: " + APCalendar.firstDayOfYear(2022));
+        System.out.println("firstDayOfYear: " + APCalendar.firstDayOfYear(2016));
         System.out.println("dayOfYear: " + APCalendar.dayOfYear(1, 1, 2022));
 
         // Public access modifiers
