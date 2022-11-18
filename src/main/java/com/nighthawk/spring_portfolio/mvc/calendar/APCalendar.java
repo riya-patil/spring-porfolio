@@ -54,10 +54,19 @@ public class APCalendar {
      * dayOfYear(3, 1, 2016) returns 61, since 2016 is a leap year. 
     */ 
     private static int dayOfYear(int month, int day, int year) {
-        // implementation not shown
+        int days[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
         
-        return 1;
+        if (month > 2 && year % 4 == 0) {
+        ++day;
         }
+ 
+        // Add the days in the previous months
+        while (month-- > 1) {
+            day = day + days[month - 1];
+        }
+
+        return day;
+    }
 
     /** Returns the number of leap years between year1 and year2, inclusive.
      * Precondition: 0 <= year1 <= year2
