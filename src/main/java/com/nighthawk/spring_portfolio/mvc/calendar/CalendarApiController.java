@@ -41,7 +41,7 @@ public class CalendarApiController {
     // add other methods
     // Calendar Endpoint: /api/calendar/firstDayOfYear/2022, Returns: {"year":2020,"firstDayOfYear":false}
     @GetMapping("/firstDayOfYear/{year}")
-    public ResponseEntity<JsonNode> getfirstDayOfYear(@PathVariable int year) throws IOException {
+    public ResponseEntity<JsonNode> getfirstDayOfYear(@PathVariable int year) throws IOException, JsonMappingException, JsonProcessingException {
       // Backend Year Object
       Year year_obj = new Year();
       year_obj.setYear(year);  // evaluates Leap Year
