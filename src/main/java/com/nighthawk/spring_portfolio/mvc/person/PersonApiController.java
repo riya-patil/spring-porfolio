@@ -51,8 +51,7 @@ public class PersonApiController {
             String ageToString = person.getAgeToString();
             return ageToString;
         }
-        // Bad ID
-        return "Error - Bad ID";       
+        return null;       
     }
     /*
     DELETE individual Person using ID
