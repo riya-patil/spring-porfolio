@@ -96,8 +96,7 @@ public class Person {
     }
 
     public String toString(){
-        return ("{ \"email\": " + this.email + ", " + "\"password\": " + this.password + ", " + "\"name\": " + this.name + 
-        ", " + "\"dob\": " + this.dob + ", " + "\"height\": " + this.height + ", " + "\"weight\": " + this.weight + " }" );
+        return ("{ \"email\": " + this.email + ", " + "\"password\": " + this.password + ", " + "\"name\": " + this.name + ", " + "\"dob\": " + this.dob + ", " + "\"height\": " + this.height + ", " + "\"weight\": " + this.weight + " }" );
     }
 
 
@@ -108,7 +107,7 @@ public class Person {
         return -1;
     }
 
-    public String getAgeToString(){ //turns it into a string
+    public String getAgeToString(){ //turns it into a string 
         return ("{ \"name\": " + this.name + " ," + "\"age\": " + this.getAge() + " }" );
     }
 
