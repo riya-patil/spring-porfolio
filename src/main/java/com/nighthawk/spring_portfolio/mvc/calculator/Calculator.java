@@ -39,7 +39,10 @@ public class Calculator {
         SEPARATORS.put(" ", 0);
         SEPARATORS.put("(", 0);
         SEPARATORS.put(")", 0);
+        SEPARATORS.put("#", 0);
     }
+
+    
 
     // Create a 1 argument constructor expecting a mathematical expression
     public Calculator(String expression) {
@@ -48,6 +51,9 @@ public class Calculator {
 
         // parentheses imbalance check
         this.parenthesesCheck();
+
+        //pound check
+        this.poundCheck();
 
         // parse expression into terms
         this.termTokenizer();
@@ -76,6 +82,20 @@ public class Calculator {
         } //throws exception if error
     }
 
+    public void poundCheck() {
+        int leftChar = 0;
+        for (int i = 0; i < this.expression.length(); i++) {
+        //iterates through checking the characters to check for parentheses 
+            if (this.expression.charAt(i) == '#') {
+                leftChar++;
+            } else {
+                continue;
+            }
+        }
+        if (leftChar != 0) {
+            throw new RuntimeException("You have a pound!!");
+        } //throws exception if error
+    }
     // Test if token is an operator
     private boolean isOperator(String token) {
         // find the token in the hash map
@@ -154,7 +174,7 @@ public class Calculator {
                 case "-":
                 case "*":
                 case "/":
-                case "%":
+                case "%": 
                     // While stack
                     // not empty AND stack top element
                     // and is an operator
@@ -266,6 +286,8 @@ public class Calculator {
         System.out.println("Powers Math\n" + powerMath);
 
         Calculator parenthesesError = new Calculator("(102-2))/3");
+
+        Calculator poundError = new Calculator("200#1");
 
         System.out.println();
 
