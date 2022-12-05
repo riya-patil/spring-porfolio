@@ -191,8 +191,6 @@ public class Calculator {
                 return x1 / x2;
             case "%":
                 return x1 % x2;
-            case "^":
-                return Math.pow(x1, x2);
             default:
                 throw new RuntimeException("Unsupported operator: " + operator);
         }
@@ -203,22 +201,20 @@ public class Calculator {
         // stack is used to hold operands and each calculation
         Stack<Double> calcStack = new Stack<Double>();
 
-        // RPN is processed, ultimately calcStack has final result
         for (String token : this.reverse_polish) {
-            // If the token is an operator, calculate
+            // token operator then calculation
             if (isOperator(token)) {
-                // Pop the two top entries
+                
                 double x2 = Double.valueOf(calcStack.pop());
                 double x1 = Double.valueOf(calcStack.pop());
 
-                // Calculate intermediate results
+                // Calculate
                 result = 0.0;
                 result = calculate(token, x1, x2);
 
-                // Push intermediate result back onto the stack
                 calcStack.push(result);
             }
-            // else the token is a number push it onto the stack
+            // else push it onto the stack
             else {
                 calcStack.push(Double.valueOf(token));
             }
@@ -262,14 +258,6 @@ public class Calculator {
         System.out.println("Division Math\n" + divisionMath);
 
         System.out.println();
-
-        Calculator powerMath = new Calculator("2^4");
-        System.out.println("Power Math\n" + powerMath);
-
-        System.out.println();
-
-        System.out.println("Parentheses imbalance error:");
-        Calculator parenthesesError = new Calculator("((100+200)*3");
 
     }
 }
