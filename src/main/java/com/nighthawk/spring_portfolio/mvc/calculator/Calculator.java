@@ -59,10 +59,11 @@ public class Calculator {
         this.rpnToResult();
     }
 
-    private void parenthesesCheck() {
+    public void parenthesesCheck() {
         int leftParentheses = 0;
         int rightParentheses = 0;
         for (int i = 0; i < this.expression.length(); i++) {
+        //iterates through checking the characters to check for parentheses 
             if (this.expression.charAt(i) == '(') {
                 leftParentheses++;
             } else if (this.expression.charAt(i) == ')') {
@@ -71,8 +72,8 @@ public class Calculator {
         }
 
         if (leftParentheses != rightParentheses) {
-            throw new RuntimeException("Parentheses imbalance, check your parentheses.");
-        }
+            throw new RuntimeException("Check your parentheses!");
+        } //throws exception if error
     }
 
     // Test if token is an operator
@@ -191,6 +192,8 @@ public class Calculator {
                 return x1 / x2;
             case "%":
                 return x1 % x2;
+            case "^":
+                return Math.pow(x1, x2);
             default:
                 throw new RuntimeException("Unsupported operator: " + operator);
         }
@@ -219,7 +222,7 @@ public class Calculator {
                 calcStack.push(Double.valueOf(token));
             }
         }
-        // Pop final result and set as final result for expression
+        //final result
         this.result = calcStack.pop();
     }
 
@@ -256,6 +259,13 @@ public class Calculator {
 
         Calculator divisionMath = new Calculator("300/200");
         System.out.println("Division Math\n" + divisionMath);
+
+        System.out.println();
+
+        Calculator powerMath = new Calculator("2^3");
+        System.out.println("Powers Math\n" + powerMath);
+
+        Calculator parenthesesError = new Calculator("(102-2))/3");
 
         System.out.println();
 
