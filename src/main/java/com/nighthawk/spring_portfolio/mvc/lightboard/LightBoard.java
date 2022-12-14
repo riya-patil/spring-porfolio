@@ -121,20 +121,6 @@ public class LightBoard {
 		return outString;
     }
 
-    public void toggleAll() {
-        for (int i = 0; i < lights.length; i++) {
-            for (int j = 0; j < lights[i].length; j++) {
-                if (lights[i][j].isOn()) {
-                    lights[i][j].setOn(false);
-                }
-                else {
-                    lights[i][j].setOn(true);
-                }
-            }
-        }
-        System.out.println("Toggling lights");
-    }
-
     public void allOn() {
         for (int i = 0; i < lights.length; i++) {
             for (int j = 0; j < lights[i].length; j++) {
@@ -150,7 +136,7 @@ public class LightBoard {
     
     static public void main(String[] args) {
         // create and display LightBoard
-        LightBoard lightBoard = new LightBoard(3, 3);
+        LightBoard lightBoard = new LightBoard(5, 3);
         // System.out.println(lightBoard);  // use toString() method
         // System.out.println(lightBoard.toTerminal());
         System.out.println(lightBoard.toColorPalette());
